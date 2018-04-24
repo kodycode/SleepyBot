@@ -47,7 +47,7 @@ class SleepyTime:
         thirdTime = datetime.strftime(thirdTime, '%I:%M %p')
         fourthTime = datetime.strftime(fourthTime, '%I:%M %p')
         await bot.say('Optimal times to sleep:\n'
-                      '{} or {} or {} or {}'
+                      '**{}** or **{}** or **{}** or **{}**'
                       ''.format(firstTime,
                                 secondTime,
                                 thirdTime,
