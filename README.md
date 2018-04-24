@@ -21,5 +21,5 @@ Original code: https://github.com/RecMatr/sleepytime
 
 **Example:**
 
-![](https://puu.sh/A9u1d/b6dd01d3e4.png)
+![](http://oi67.tinypic.com/2ztemb9.jpg)
 
