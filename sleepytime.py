@@ -16,26 +16,28 @@ class SleepyTime:
 
     @bot.event
     async def on_ready():
-        print("Sleepytime")
+        print("SleepyBot online")
 
     @bot.command(name="sleep")
     async def sleepy_cmd(time, meridiem):
         """
         Calculates optimal times to sleep at
+        An example of this command would be:
+        "~sleep 8:30 AM"
 
-        @param time - time to input (i.e. 8:00)
+        @param time - time to wake up at (i.e. 8:30)
         @param meridiem - AM or PM
         """
         timeInput = "{} {}".format(time, meridiem)
         timeToWake = ""
         try:
-            print(timeInput)
             timeToWake = datetime.strptime(timeInput, '%H:%M %p')
             if 'pm' in timeInput.lower():
                 timeToWake = timeToWake + timedelta(hours=12)
         except:
             await bot.say('Error, please input a bedtime in the proper format '
                           '(ex: 10:00 AM)')
+            return
         firstTime = timeToWake - timedelta(hours=9, minutes=0)
         secondTime = timeToWake - timedelta(hours=7.5, minutes=0)
         thirdTime = timeToWake - timedelta(hours=6, minutes=0)
@@ -44,11 +46,12 @@ class SleepyTime:
         secondTime = datetime.strftime(secondTime, '%I:%M %p')
         thirdTime = datetime.strftime(thirdTime, '%I:%M %p')
         fourthTime = datetime.strftime(fourthTime, '%I:%M %p')
-        await bot.say('{} or {} or {} or {}'.format(
-                    firstTime,
-                    secondTime,
-                    thirdTime,
-                    fourthTime))
+        await bot.say('Optimal times to sleep:\n'
+                      '{} or {} or {} or {}'
+                      ''.format(firstTime,
+                                secondTime,
+                                thirdTime,
+                                fourthTime))
 
 
 SleepyTime()
