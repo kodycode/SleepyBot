@@ -1,7 +1,7 @@
 [![Discord Bots](https://discordbots.org/api/widget/lib/438208284239855636.svg?noavatar=true)](https://discordbots.org/bot/438208284239855636)
-[![Discord Bots](https://discordbots.org/api/widget/status/438208284239855636.svg?noavatar=true)](https://discordbots.org/bot/353373501274456065)
-[![Discord Bots](https://discordbots.org/api/widget/servers/438208284239855636.svg?noavatar=true)](https://discordbots.org/bot/353373501274456065)
-[![Discord Bots](https://discordbots.org/api/widget/upvotes/438208284239855636.svg?noavatar=true)](https://discordbots.org/bot/353373501274456065)
+[![Discord Bots](https://discordbots.org/api/widget/status/438208284239855636.svg?noavatar=true)](https://discordbots.org/bot/438208284239855636)
+[![Discord Bots](https://discordbots.org/api/widget/servers/438208284239855636.svg?noavatar=true)](https://discordbots.org/bot/438208284239855636)
+[![Discord Bots](https://discordbots.org/api/widget/upvotes/438208284239855636.svg?noavatar=true)](https://discordbots.org/bot/438208284239855636)
 # SleepyBot
 Discord bot inspired by https://sleepyti.me/
 
