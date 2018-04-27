@@ -1,6 +1,12 @@
 from datetime import datetime, timedelta
 from discord.ext import commands
+import json
+import requests
 
+DISCORD_BOT_URL = "https://discordbots.org/bot/438208284239855636/stats"
+DBL = "cogs.dbl"
+with open('config.json') as config:
+    config_data = json.load(config)
 bot = commands.Bot(command_prefix="~",
                    description="Sleepytime")
 
@@ -12,11 +18,18 @@ class SleepyTime:
         """
         Runs bot
         """
-        bot.run("Enter token here")
+        bot.run(config_data["bot_token"])
 
     @bot.event
     async def on_ready():
-        print("SleepyBot online")
+        try:
+            if "dbl_token" in config_data:
+                bot.load_extension(DBL)
+            print("SleepyBot online")
+        except Exception as e:
+            error_msg = ('Failed to load cog manager\n{}: {}'
+                         '').format(type(e).__name__, e)
+            print(error_msg)
 
     @bot.command(name="sleep")
     async def sleepy_cmd(time, meridiem):
@@ -53,6 +66,17 @@ class SleepyTime:
                                 secondTime,
                                 thirdTime,
                                 fourthTime))
+
+
+def update_server_count(server_count):
+    try:
+        header = {'Authorization': '{}'.format(config_data["auth_token"])}
+        payload = {'server_count': server_count}
+        requests.post(DISCORD_BOT_URL,
+                      headers=header,
+                      data=payload)
+    except:
+        pass
 
 
 SleepyTime()
