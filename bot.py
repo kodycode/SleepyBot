@@ -1,6 +1,11 @@
 from datetime import datetime, timedelta
 from discord.ext import commands
+import json
+import requests
 
+DISCORD_BOT_URL = "https://discordbots.org/bot/438208284239855636/stats"
+with open('config.json') as config:
+    config_data = json.load(config)
 bot = commands.Bot(command_prefix="~",
                    description="Sleepytime")
 
@@ -15,7 +20,12 @@ class SleepyTime:
         bot.run("Enter token here")
 
     @bot.event
+    async def on_server_join(server):
+        update_server_count(len(bot.servers))
+
+    @bot.event
     async def on_ready():
+        update_server_count(len(bot.servers))
         print("SleepyBot online")
 
     @bot.command(name="sleep")
@@ -53,6 +63,17 @@ class SleepyTime:
                                 secondTime,
                                 thirdTime,
                                 fourthTime))
+
+
+def update_server_count(server_count):
+    try:
+        header = {'Authorization': '{}'.format(config_data["auth_token"])}
+        payload = {'server_count': server_count}
+        requests.post(DISCORD_BOT_URL,
+                      headers=header,
+                      data=payload)
+    except:
+        pass
 
 
 SleepyTime()
