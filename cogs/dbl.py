@@ -28,5 +28,4 @@ class DiscordBotsOrgAPI:
 def setup(bot):
     with open('config.json') as config:
         config_data = json.load(config)
-    if "dbl_token" in config_data:
-        bot.add_cog(DiscordBotsOrgAPI(bot), config_data["dbl_token"])
+    bot.add_cog(DiscordBotsOrgAPI(bot), config_data["dbl_token"])

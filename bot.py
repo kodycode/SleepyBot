@@ -23,7 +23,8 @@ class SleepyTime:
     @bot.event
     async def on_ready():
         try:
-            bot.load_extension(DBL)
+            if "dbl_token" in config_data:
+                bot.load_extension(DBL)
             print("SleepyBot online")
         except Exception as e:
             error_msg = ('Failed to load cog manager\n{}: {}'
