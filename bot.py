@@ -17,7 +17,7 @@ class SleepyTime:
         """
         Runs bot
         """
-        bot.run("Enter token here")
+        bot.run(config_data["bot_token"])
 
     @bot.event
     async def on_server_join(server):
