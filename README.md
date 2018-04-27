@@ -12,11 +12,9 @@ Click [here](https://discordapp.com/api/oauth2/authorize?client_id=4382082842398
 [![Discord Bots](https://discordbots.org/api/widget/438208284239855636.svg)](https://discordbots.org/bot/438208284239855636)
 
 # Installation
-1. Open up bot.py
+1. Rename config_template.json to config.json
 
-2. Find where it says `bot.run` under the `__init__` function
-
-3. Replace the `Enter token here` text with your discord bot token
+2. Enter your discord bot token in the field of `bot_token`
 
 # Commands
 `~sleep`
