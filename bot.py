@@ -4,6 +4,7 @@ import json
 import requests
 
 DISCORD_BOT_URL = "https://discordbots.org/bot/438208284239855636/stats"
+DBL = "cogs.dbl"
 with open('config.json') as config:
     config_data = json.load(config)
 bot = commands.Bot(command_prefix="~",
@@ -20,13 +21,14 @@ class SleepyTime:
         bot.run(config_data["bot_token"])
 
     @bot.event
-    async def on_server_join(server):
-        update_server_count(len(bot.servers))
-
-    @bot.event
     async def on_ready():
-        update_server_count(len(bot.servers))
-        print("SleepyBot online")
+        try:
+            bot.load_extension(DBL)
+            print("SleepyBot online")
+        except Exception as e:
+            error_msg = ('Failed to load cog manager\n{}: {}'
+                         '').format(type(e).__name__, e)
+            print(error_msg)
 
     @bot.command(name="sleep")
     async def sleepy_cmd(time, meridiem):
